@@ -1,5 +1,5 @@
 a=input("radius?")
-print("area=",int(a)*31.4)
+print("area=",int(a)*int(a)*3.14)
 c=input("enter the temperature in celsius?")
 print(c,"(c) =",int(c)*1.8+32,"(f)")
 m=input("how many b bacterias are there?")
