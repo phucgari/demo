@@ -1,7 +1,20 @@
-from flask import Flask,render_template
-
+from flask import Flask,render_template,request
+import mongoengine
+from mongoengine import *
 app = Flask(__name__)
+#mongodb://<dbuser>:<dbpassword>@ds133358.mlab.com:33358/flask
+host = "ds133358.mlab.com"
+port = 33358
+db_name = "flask"
+user_name = "admin"
+password = "admin"
+mongoengine.connect(db_name, host=host, port=port, username=user_name, password=password)
 
+class User(Document):
+    name= StringField()
+    des= StringField()
+    img= StringField()
+    link= StringField()
 
 @app.route('/')
 def hello_world():
@@ -36,7 +49,18 @@ def hobby():
 
     ]
     return render_template("game.html",game_list=game)
-
+@app.route("/addgame", methods=["GET","POST"])
+def adding():
+    if request.method=="GET":
+        return render_template("adding.html")
+    elif request.method=="POST":
+        namex=request.form["name"]
+        desx=request.form["des"]
+        imgx=request.form["img"]
+        linkx=request.form["link"]
+        game=User(name=namex, img=imgx ,des=desx,link=linkx)
+        game.save()
+        return "thank for your add"
 
 if __name__ == '__main__':
     app.run()
