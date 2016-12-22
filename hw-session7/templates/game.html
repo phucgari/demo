@@ -15,37 +15,25 @@
 </div>
 </div>
 
-<div class="w3-row w3-container" style="margin:50px 0">
-    {% for a in range(2) %}
+
+    {% for game in game_list %}
 <div class="w3-half w3-container">
   <div class="w3-topbar w3-border-amber w3-padding-top">
-    <img  src={{ game_list[a]["img"] }} style="width:100%">
-    <h2>{{ game_list[a]["name"] }}</h2>
-    <p>{{ game_list[a]["des"] }}.</p>
-    <a href="{{ game_list[a]["link"] }}">{{ game_list[a]["name"] }} home page</a>
+    <img  src={{ game["img"] }} style="width:100%">
+    <h2>{{ game["name"] }}</h2>
+    <p>{{ game["des"] }}.</p>
+    <a href="{{ game["link"] }}">{{ game["name"] }} home page</a>
+    <div class="w3-right-align">
+        <a href="/deletegame/{{ game.id }}"><img src="http://downloadicons.net/sites/default/files/delete-icon-37693.png" ></a>
+        <a href="/updategame/{{ game.id }}"><img src="http://icons.veryicon.com/png/System/Farm%20Fresh/update.png"></a>
     </div>
+    </div>
+
 </div>
     {% endfor %}
 
 
 
-</div>
-
-<div class="w3-row w3-container" style="margin:50px 0">
-    {% for a in range(2,4) %}
-<div class="w3-half w3-container">
-  <div class="w3-topbar w3-border-amber w3-padding-top">
-    <img  src={{ game_list[a]["img"] }} style="width:100%">
-    <h2>{{ game_list[a]["name"] }}</h2>
-    <p>{{ game_list[a]["des"] }}.</p>
-    <a href="{{ game_list[a]["link"] }}">{{ game_list[a]["name"] }} home page</a>
-   </div>
-</div>
-    {% endfor %}
-
-
-
-</div>
 
 </body>
 </html>
