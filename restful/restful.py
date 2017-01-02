@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_restful import Resource, Api, reqparse
 from mongoengine import *
 import json
@@ -21,7 +21,7 @@ class Game(Document):
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template("index.html")
 
 
 class GameListRes(Resource):
